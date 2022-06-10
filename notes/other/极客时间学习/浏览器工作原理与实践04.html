@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>04：浏览器的页面循环系统 | Shannon&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/imgs/logo.jpg">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.37eee861.css" as="style"><link rel="preload" href="/assets/js/app.2569b18e.js" as="script"><link rel="preload" href="/assets/js/2.8f39017e.js" as="script"><link rel="preload" href="/assets/js/16.205565ec.js" as="script"><link rel="prefetch" href="/assets/js/10.f66ce4fc.js"><link rel="prefetch" href="/assets/js/11.ed026803.js"><link rel="prefetch" href="/assets/js/12.244eec8d.js"><link rel="prefetch" href="/assets/js/13.b9787f8c.js"><link rel="prefetch" href="/assets/js/14.9da50247.js"><link rel="prefetch" href="/assets/js/15.771d34ac.js"><link rel="prefetch" href="/assets/js/17.924df13d.js"><link rel="prefetch" href="/assets/js/18.ecbcfce8.js"><link rel="prefetch" href="/assets/js/19.f4dbd194.js"><link rel="prefetch" href="/assets/js/20.ce1ea3b9.js"><link rel="prefetch" href="/assets/js/21.db618e0e.js"><link rel="prefetch" href="/assets/js/22.e3fa43ae.js"><link rel="prefetch" href="/assets/js/23.65a2acb6.js"><link rel="prefetch" href="/assets/js/24.dce622db.js"><link rel="prefetch" href="/assets/js/25.4a8a8c21.js"><link rel="prefetch" href="/assets/js/26.ead71dc0.js"><link rel="prefetch" href="/assets/js/27.7c1f0c0e.js"><link rel="prefetch" href="/assets/js/28.e5e0e2e3.js"><link rel="prefetch" href="/assets/js/29.3e41561b.js"><link rel="prefetch" href="/assets/js/3.580ca8c6.js"><link rel="prefetch" href="/assets/js/30.38c64303.js"><link rel="prefetch" href="/assets/js/31.ed629aa4.js"><link rel="prefetch" href="/assets/js/32.922703e1.js"><link rel="prefetch" href="/assets/js/33.56718a48.js"><link rel="prefetch" href="/assets/js/34.f152050f.js"><link rel="prefetch" href="/assets/js/35.f0a8fbd4.js"><link rel="prefetch" href="/assets/js/36.1937fefa.js"><link rel="prefetch" href="/assets/js/4.8fcbd0e4.js"><link rel="prefetch" href="/assets/js/5.1c8fd3a7.js"><link rel="prefetch" href="/assets/js/6.c830952d.js"><link rel="prefetch" href="/assets/js/7.d87baec7.js"><link rel="prefetch" href="/assets/js/8.eb17ffd3.js"><link rel="prefetch" href="/assets/js/9.215c0f5f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.37eee861.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/imgs/logo.jpg" alt="Shannon's Blog" class="logo"> <span class="site-name can-hide">Shannon's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/notes/F2E/" class="nav-link">
+  前端基础
+</a></div><div class="nav-item"><a href="/notes/other/" class="nav-link router-link-active">
+  杂七杂八
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/notes/F2E/" class="nav-link">
+  前端基础
+</a></div><div class="nav-item"><a href="/notes/other/" class="nav-link router-link-active">
+  杂七杂八
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>实践扩展</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>极客时间学习</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/notes/other/极客时间学习/浏览器工作原理与实践02.html" class="sidebar-link">02：浏览器中的 JavaScript 执行机制</a></li><li><a href="/notes/other/极客时间学习/浏览器工作原理与实践03.html" class="sidebar-link">03：V8 工作原理</a></li><li><a href="/notes/other/极客时间学习/浏览器工作原理与实践04.html" class="active sidebar-link">04：浏览器的页面循环系统</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/notes/other/极客时间学习/浏览器工作原理与实践04.html#消息队列和事件循环-页面是怎么-活-起来的" class="sidebar-link">消息队列和事件循环：页面是怎么“活”起来的？</a></li><li class="sidebar-sub-header"><a href="/notes/other/极客时间学习/浏览器工作原理与实践04.html#webapi-settimeout-是如何实现的" class="sidebar-link">WebAPI：setTimeout 是如何实现的？</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>软实力</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_04-浏览器的页面循环系统"><a href="#_04-浏览器的页面循环系统" class="header-anchor">#</a> 04：浏览器的页面循环系统</h1> <h2 id="消息队列和事件循环-页面是怎么-活-起来的"><a href="#消息队列和事件循环-页面是怎么-活-起来的" class="header-anchor">#</a> 消息队列和事件循环：页面是怎么“活”起来的？</h2> <ol><li><p>消息队列和事件循环机制
+在线程运行过程中，通过事件循环机制可以接收并执行新的任务，通过消息队列，可以处理其他线程发来的任务。
+<img src="/assets/img/12.bc85efdd.png" alt="队列+循环">
+对于跨进程任务，渲染进程中专门有一个 IO 线程用于接收其他进程传过来的消息，会将这些消息组装成任务。</p></li> <li><p>微任务
+消息队列机制并不是太灵活，为了适应效率和实时性，引入了微任务。</p></li></ol> <h2 id="webapi-settimeout-是如何实现的"><a href="#webapi-settimeout-是如何实现的" class="header-anchor">#</a> WebAPI：setTimeout 是如何实现的？</h2></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.2569b18e.js" defer></script><script src="/assets/js/2.8f39017e.js" defer></script><script src="/assets/js/16.205565ec.js" defer></script>
+  </body>
+</html>
